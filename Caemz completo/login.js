@@ -1,0 +1,1 @@
+document.getElementById("login").addEventListener("submit",e=>{e.preventDefault();if(document.getElementById("usuario").value==="admin"&&document.getElementById("clave").value==="demo123"){sessionStorage.setItem("ecmz_admin_demo","si");location.href="admin.html"}else document.getElementById("mensaje").textContent="Usuario o contraseña incorrectos."});
