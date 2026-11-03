@@ -1,0 +1,9 @@
+const KEY="caemz_novedades";
+const ejemplos=[
+{id:"pacheco-aysic",titulo:"Nuevas clases de apoyo: AySIC I y II",fecha:"2026-11-03",descripcion:"La profesora Pacheco agregó clases de apoyo para AySIC I y AySIC II. Consultá con la profesora los horarios y detalles de las clases.",imagen:"",url:"novedades/clases-apoyo-aysic.html"},
+{id:"estruch-noviembre",titulo:"Aviso: clases del profesor Estruch",fecha:"2026-11-03",descripcion:"El profesor Jorge Estruch no dictará clases desde el 17 hasta el 20 de noviembre, inclusive.",imagen:"",url:"novedades/aviso-estruch-noviembre.html"}
+];
+function datos(){let x=localStorage.getItem(KEY);if(x===null)return ejemplos;try{return [...ejemplos,...JSON.parse(x).filter(n=>!ejemplos.some(e=>e.id===n.id))]}catch(e){return ejemplos}}
+function fechaBonita(f){if(!f)return "";let p=f.split("-");return p.length===3?p[2]+"/"+p[1]+"/"+p[0]:f}
+function tarjeta(n){let a=document.createElement("article");a.className="novedad";if(n.imagen){let i=document.createElement("img");i.src=n.imagen;i.alt="";a.append(i)}let t=document.createElement("div");t.className="texto";let h=document.createElement("h3");h.textContent=n.titulo;let p=document.createElement("p");p.textContent=n.descripcion;let f=document.createElement("div");f.className="fecha";f.textContent=fechaBonita(n.fecha);t.append(h,p,f);a.append(t);let link=document.createElement("a");link.className="boton-novedad";link.href=n.url||("novedades/"+n.archivo);link.textContent="Leer novedad";link.setAttribute("aria-label","Leer: "+n.titulo);a.append(link);return a}
+let cont=document.getElementById("novedades");if(cont){cont.replaceChildren();let lista=datos().sort((a,b)=>b.fecha.localeCompare(a.fecha));if(!lista.length)cont.textContent="Todavía no hay novedades publicadas.";else lista.forEach(n=>cont.append(tarjeta(n)))}

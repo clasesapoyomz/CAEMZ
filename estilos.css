@@ -26,3 +26,7 @@
 .navegacion a{color:#fff;text-decoration:none;font-weight:bold;padding:8px;border-radius:4px}
 .navegacion a:hover{background:#ffffff25}
 @media(max-width:760px){.pie{justify-content:center;text-align:center}.pie-enlaces,.redes-sociales{justify-content:center}}
+
+/* Tarjetas de novedades interactivas */
+.novedad .boton-novedad{display:inline-block;align-self:flex-start;margin:0 14px 14px;background:#0666c5;color:#fff;text-decoration:none;padding:9px 13px;border-radius:5px;font-weight:bold}.novedad .boton-novedad:hover{background:#034d98;text-decoration:none}.novedad{transition:box-shadow .18s,transform .18s}.novedad:hover{box-shadow:0 5px 18px #172b4420;transform:translateY(-2px)}
+\n.imagen-novedad-detalle{display:block;max-width:100%;max-height:460px;object-fit:contain;margin:18px 0;border-radius:8px}\n
