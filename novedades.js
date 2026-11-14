@@ -35,6 +35,12 @@ async function cargarNovedad(archivo) {
 
         let imagenUrl = imagen?.getAttribute("src") || "";
 
+        // COMPROBACIÓN DE LA IMAGEN
+        console.log("Archivo:", archivo);
+        console.log("Imagen encontrada:", !!imagen);
+        console.log("Inicio de la imagen:", imagenUrl.substring(0, 50));
+        console.log("Longitud de la imagen:", imagenUrl.length);
+
         // Resolver correctamente las rutas de las imágenes
         if (imagenUrl && !/^(data:|blob:|https?:)/i.test(imagenUrl)) {
             imagenUrl = new URL(imagenUrl, respuesta.url).href;
@@ -64,6 +70,11 @@ function tarjeta(n) {
         i.src = n.imagen;
         i.alt = "Imagen de la novedad";
         i.style.maxWidth = "100%";
+
+        i.onerror = () => {
+            console.error("No se pudo mostrar la imagen de:", n.titulo);
+        };
+
         a.append(i);
     }
 
