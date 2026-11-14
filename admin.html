@@ -1,4 +1,4 @@
-
+```html
 <!doctype html>
 <html lang="es">
 
@@ -20,18 +20,36 @@
         <img src="img/logo-uncuyo-ecmz.png" alt="CAEMZ">
     </a>
 
-    <nav>
-        <a href="index.html">Ver sitio</a>
+    <div class="navegacion">
+
+        <details class="menu-desplegable">
+            <summary>☰ Menú</summary>
+
+            <div class="opciones-menu">
+                <a href="index.html">Inicio</a>
+                <a href="materias.html">Materias</a>
+                <a href="profesores.html">Profesores</a>
+                <a href="quienes-somos.html">Quiénes somos</a>
+                <a href="contactos.html">Contactos</a>
+            </div>
+        </details>
+
+        <a class="sitio-oficial"
+           href="https://mzapata.uncuyo.edu.ar/"
+           target="_blank"
+           rel="noopener noreferrer">
+            Sitio oficial ↗
+        </a>
+
         <button id="salir" type="button">Cerrar sesión</button>
-    </nav>
+
+    </div>
 
 </header>
 
 <main class="contenido">
 
     <h1>Administrar novedades</h1>
-
-    <!-- FORMULARIO PARA CREAR NOVEDADES -->
 
     <form id="form-novedad" class="form">
 
@@ -44,59 +62,32 @@
 
         <label>
             Título
-            <input
-                id="titulo"
-                maxlength="120"
-                required
-            >
+            <input id="titulo" maxlength="120" required>
         </label>
 
         <label>
             Fecha
-            <input
-                id="fecha"
-                type="date"
-                required
-            >
+            <input id="fecha" type="date" required>
         </label>
 
         <label>
             Descripción
-            <textarea
-                id="descripcion"
-                maxlength="600"
-                rows="4"
-                required
-            ></textarea>
+            <textarea id="descripcion" maxlength="600" rows="4" required></textarea>
         </label>
 
         <label>
             Imagen (opcional)
-            <input
-                id="imagen"
-                type="file"
-                accept="image/*"
-            >
+            <input id="imagen" type="file" accept="image/*">
         </label>
 
-        <!-- VISTA PREVIA -->
-
-        <div
-            id="vista-previa-container"
-            style="display:none; margin:15px 0;"
-        >
+        <div id="vista-previa-container" style="display:none; margin:15px 0;">
 
             <p>Vista previa de la imagen:</p>
 
             <img
                 id="vista-previa"
                 alt="Vista previa"
-                style="
-                    max-width:100%;
-                    max-height:300px;
-                    border-radius:8px;
-                    object-fit:contain;
-                "
+                style="max-width:100%; max-height:300px; border-radius:8px; object-fit:contain;"
             >
 
         </div>
@@ -109,8 +100,6 @@
 
     </form>
 
-    <!-- ADMINISTRACIÓN DE NOVEDADES -->
-
     <h2>Novedades publicadas</h2>
 
     <div class="acciones-admin">
@@ -118,8 +107,7 @@
         <button
             id="btn-borrar-novedades"
             type="button"
-            class="btn-borrar"
-        >
+            class="btn-borrar">
             Borrar todas las novedades
         </button>
 
@@ -149,7 +137,6 @@
 </footer>
 
 <style>
-
     .acciones-admin {
         margin: 15px 0;
     }
@@ -166,8 +153,8 @@
     .btn-borrar:hover {
         background: #b02a37;
     }
-
 </style>
 
 </body>
 </html>
+```
