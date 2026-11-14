@@ -1,17 +1,20 @@
 
+// Archivos de las novedades
 const archivos = [
-    "novedades/clases-apoyo-aysic.html",
-    "novedades/aviso-estruch-noviembre.html",
-    "novedades/nuevas-clases-de-apoyo-de-quimica.html"
+    "clases-apoyo-aysic.html",
+    "aviso-estruch-noviembre.html",
+    "nuevas-clases-de-apoyo-de-quimica.html"
 ];
 
-// Crear tarjeta a partir de un HTML
-async function cargarNovedad(ruta) {
+// Cargar una novedad desde su archivo HTML
+async function cargarNovedad(archivo) {
+    const ruta = "novedades/" + archivo;
+
     try {
         const respuesta = await fetch(ruta);
 
         if (!respuesta.ok) {
-            throw new Error("No se pudo cargar " + ruta);
+            throw new Error("No se pudo cargar: " + ruta);
         }
 
         const html = await respuesta.text();
@@ -19,7 +22,9 @@ async function cargarNovedad(ruta) {
 
         const detalle = documento.querySelector(".detalle");
 
-        if (!detalle) return null;
+        if (!detalle) {
+            throw new Error("No se encontró .detalle en " + ruta);
+        }
 
         const titulo = detalle.querySelector("h1")?.textContent.trim() || "";
         const fecha = detalle.querySelector(".fecha")?.textContent.trim() || "";
@@ -28,16 +33,23 @@ async function cargarNovedad(ruta) {
         const descripcion = [...detalle.querySelectorAll("p")]
             .find(p => !p.classList.contains("fecha"))?.textContent.trim() || "";
 
+        let imagenUrl = imagen?.getAttribute("src") || "";
+
+        // Resolver correctamente las rutas de las imágenes
+        if (imagenUrl && !/^(data:|blob:|https?:)/i.test(imagenUrl)) {
+            imagenUrl = new URL(imagenUrl, respuesta.url).href;
+        }
+
         return {
             titulo,
             fecha,
             descripcion,
-            imagen: imagen ? imagen.getAttribute("src") : "",
+            imagen: imagenUrl,
             url: ruta
         };
 
     } catch (error) {
-        console.error(error);
+        console.error("Error cargando novedad:", error);
         return null;
     }
 }
@@ -49,8 +61,9 @@ function tarjeta(n) {
 
     if (n.imagen) {
         const i = document.createElement("img");
-        i.src = new URL(n.imagen, n.url).href;
+        i.src = n.imagen;
         i.alt = "Imagen de la novedad";
+        i.style.maxWidth = "100%";
         a.append(i);
     }
 
@@ -80,27 +93,31 @@ function tarjeta(n) {
     return a;
 }
 
+// Convertir fecha DD/MM/AAAA
+function convertirFecha(fecha) {
+    const [dia, mes, anio] = fecha.split("/");
+    return new Date(Number(anio), Number(mes) - 1, Number(dia));
+}
+
 // Mostrar novedades
 async function mostrarNovedades() {
     const cont = document.getElementById("novedades");
 
     if (!cont) return;
 
-    cont.replaceChildren();
+    cont.textContent = "Cargando novedades...";
 
-    const novedades = (await Promise.all(
+    const resultados = await Promise.all(
         archivos.map(cargarNovedad)
-    )).filter(n => n !== null);
+    );
 
-    // Ordenar por fecha
+    const novedades = resultados.filter(n => n !== null);
+
     novedades.sort((a, b) => {
-        const convertir = f => {
-            const [dia, mes, anio] = f.split("/");
-            return new Date(anio, mes - 1, dia);
-        };
-
-        return convertir(b.fecha) - convertir(a.fecha);
+        return convertirFecha(b.fecha) - convertirFecha(a.fecha);
     });
+
+    cont.replaceChildren();
 
     if (novedades.length === 0) {
         cont.textContent = "Todavía no hay novedades publicadas.";
