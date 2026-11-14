@@ -22,10 +22,29 @@
 
 body {
     margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
     font: 16px Arial, sans-serif;
     line-height: 1.5;
     color: var(--texto);
     background: var(--fondo);
+}
+
+body > header,
+body > footer {
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1;
+    min-width: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* ========================================
@@ -209,6 +228,7 @@ body {
 .novedad p {
     margin: 0 0 8px;
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 .fecha {
@@ -249,6 +269,7 @@ button {
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    max-width: 100%;
 }
 
 button:hover {
@@ -305,11 +326,20 @@ input,
 textarea {
     display: block;
     width: 100%;
+    min-width: 0;
     padding: 10px;
     margin-top: 6px;
     border: 1px solid #c7ced8;
     border-radius: 5px;
     font: inherit;
+}
+
+input {
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
 }
 
 .aviso {
@@ -349,6 +379,7 @@ textarea {
 .item-card {
     display: flex;
     gap: 15px;
+    min-width: 0;
     background: var(--blanco);
     border: 1px solid var(--borde);
     border-radius: 9px;
@@ -364,6 +395,11 @@ textarea {
     display: grid;
     place-items: center;
     font-size: 1.5rem;
+}
+
+.item-texto {
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .item-texto h2 {
@@ -412,6 +448,7 @@ textarea {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 3px 12px #172b4410;
+    overflow-wrap: anywhere;
 }
 
 .detalle h2 {
@@ -517,6 +554,10 @@ textarea {
         justify-content: space-between;
     }
 
+    .navegacion {
+        gap: 10px;
+    }
+
     .pie {
         justify-content: center;
         text-align: center;
@@ -535,6 +576,21 @@ textarea {
 
     .item-card {
         padding: 16px;
+    }
+
+    .contenido {
+        width: 90%;
+        padding: 24px 0 36px;
+    }
+
+    .detalle {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .form,
+    #login {
+        padding: 20px;
     }
 }
 
@@ -576,5 +632,23 @@ textarea {
 
     .redes-sociales {
         justify-content: center;
+    }
+
+    .portada,
+    .titulo-pagina {
+        padding: 28px 14px;
+    }
+
+    .portada h1,
+    .titulo-pagina h1 {
+        font-size: 1.6rem;
+    }
+
+    .login {
+        padding: 16px;
+    }
+
+    .acciones-admin button {
+        width: 100%;
     }
 }
