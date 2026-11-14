@@ -510,3 +510,27 @@ footer a,
 .btn-borrar:hover {
     background: #b02a37;
 }
+
+/* INFORMACIÓN DEL FOOTER */
+
+.pie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* ICONOS DE REDES SOCIALES */
+
+.redes-sociales img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+
+.redes-sociales a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
