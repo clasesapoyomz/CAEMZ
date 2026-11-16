@@ -5,7 +5,7 @@ document.getElementById("ver-clave").addEventListener("click", () => {
 
     if (clave.type === "password") {
         clave.type = "text";
-        boton.textContent = "🙈";
+        boton.textContent = "👁";
         boton.setAttribute("aria-label", "Ocultar contraseña");
     } else {
         clave.type = "password";
