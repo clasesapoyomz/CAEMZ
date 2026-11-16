@@ -315,6 +315,7 @@ button:hover {
 #login {
     width: min(440px, 100%);
 }
+
 .campo-clave {
     position: relative;
     display: flex;
@@ -339,6 +340,7 @@ button:hover {
 #ver-clave:hover {
     background: transparent;
 }
+
 #ver-clave svg {
     width: 21px;
     height: 21px;
@@ -349,6 +351,7 @@ button:hover {
     stroke-linejoin: round;
     display: block;
 }
+
 label {
     display: block;
     font-weight: bold;
@@ -391,16 +394,56 @@ textarea {
     color: var(--azul-oscuro);
 }
 
-.buscador {
-    display: block;
+/* BUSCADOR CON LUPITA */
+
+.buscador-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     width: 100%;
     max-width: 520px;
+    margin-bottom: 24px;
+}
+
+.buscador-contenedor .buscador {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
     padding: 12px 14px;
     border: 1px solid #c8d2df;
     border-radius: 7px;
     font: inherit;
     background: var(--blanco);
-    margin-bottom: 24px;
+}
+
+.buscador-contenedor button {
+    flex: 0 0 46px;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    background: var(--azul);
+    color: var(--blanco);
+    cursor: pointer;
+}
+
+.buscador-contenedor button:hover {
+    background: var(--azul-oscuro);
+}
+
+.buscador-contenedor button svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .catalogo-grid {
@@ -527,15 +570,11 @@ textarea {
     text-decoration: underline;
 }
 
-/* INFORMACIÓN */
-
 .pie-info {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-
-/* REDES SOCIALES */
 
 .redes-sociales {
     display: flex;
@@ -559,8 +598,6 @@ textarea {
     object-fit: contain;
     display: block;
 }
-
-/* ACCESO ADMINISTRATIVO */
 
 .login-enlace {
     display: inline-block;
