@@ -462,7 +462,9 @@ textarea {
     padding: 20px;
     box-shadow: 0 3px 12px #172b4410;
 }
-
+.item-card[hidden] {
+    display: none;
+}
 .item-icono {
     flex: 0 0 48px;
     height: 48px;
