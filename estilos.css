@@ -315,7 +315,30 @@ button:hover {
 #login {
     width: min(440px, 100%);
 }
+.campo-clave {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+.campo-clave input {
+    padding-right: 45px;
+}
+
+#ver-clave {
+    position: absolute;
+    right: 10px;
+    padding: 5px;
+    background: transparent;
+    color: var(--texto);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#ver-clave:hover {
+    background: transparent;
+}
 label {
     display: block;
     font-weight: bold;
