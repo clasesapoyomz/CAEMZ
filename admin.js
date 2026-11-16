@@ -141,7 +141,7 @@ function makeHtml(title, desc, date, imageData = "") {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)} | CAEMZ</title>
+<title>${esc(title)} | ECMZ</title>
 <link rel="stylesheet" href="../estilos.css">
 </head>
 
@@ -149,40 +149,76 @@ function makeHtml(title, desc, date, imageData = "") {
 
 <header class="encabezado">
 
-<a href="../index.html">
-<img src="../img/logo-uncuyo-ecmz.png" alt="CAEMZ">
-</a>
+    <a href="../index.html">
+        <img src="../img/logo-uncuyo-ecmz.png" alt="UNCUYO - Escuela de Comercio Martín Zapata">
+    </a>
 
-<nav>
-<a href="../index.html">Inicio</a>
-<a href="../materias.html">Materias</a>
-<a href="../profesores.html">Profesores</a>
-</nav>
+    <div class="navegacion">
+
+        <details class="menu-desplegable">
+            <summary>☰ Menú</summary>
+
+            <div class="opciones-menu">
+                <a href="../index.html">Inicio</a>
+                <a href="../materias.html">Materias</a>
+                <a href="../profesores.html">Profesores</a>
+                <a href="../quienes-somos.html">Quiénes somos</a>
+                <a href="../contactos.html">Contactos</a>
+            </div>
+        </details>
+
+        <a class="sitio-oficial" href="https://mzapata.uncuyo.edu.ar/" target="_blank" rel="noopener noreferrer">
+            Sitio oficial ↗
+        </a>
+
+    </div>
 
 </header>
 
 <main class="contenido">
 
-<article class="detalle">
+    <article class="detalle">
 
-<p class="fecha">${esc(fechaBonita(date))}</p>
+        <p class="fecha">${esc(fechaBonita(date))}</p>
 
-<h1>${esc(title)}</h1>
+        <h1>${esc(title)}</h1>
 
-${imagenHTML}
+        ${imagenHTML}
 
-<p>${esc(desc).replace(/\n/g, "<br>")}</p>
+        <p>${esc(desc).replace(/\n/g, "<br>")}</p>
 
-<a class="boton-novedad" href="../index.html">
-← Volver a novedades
-</a>
+        <a class="boton-novedad" href="../index.html">
+            ← Volver a novedades
+        </a>
 
-</article>
+    </article>
 
 </main>
 
 <footer class="pie">
-<span>© Escuela de Comercio Martín Zapata · CAEMZ</span>
+
+    <div class="pie-info">
+        <span>© 2026 Escuela de Comercio Martín Zapata · ECMZ</span>
+        <span>CAEMZ · Clases de apoyo</span>
+        <a class="login-enlace" href="../login.html">🔐 Acceso administrativo</a>
+    </div>
+
+    <nav class="redes-sociales" aria-label="Redes sociales">
+
+        <a href="https://www.facebook.com/profile.php?id=61595909646352"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook">
+            <img src="../img/facebook.png" alt="Facebook">
+        </a>
+
+        <a href="https://www.instagram.com/cae.mz/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram">
+            <img src="../img/instagram.png" alt="Instagram">
+        </a>
+
+    </nav>
+
 </footer>
 
 </body>
