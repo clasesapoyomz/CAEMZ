@@ -1,14 +1,15 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const configuraciones = [
         {
             input: "buscar-materia",
+            boton: "boton-buscar-materia",
             contenedor: "catalogo-materias",
             mensaje: "sin-resultados"
         },
         {
             input: "buscar-profesor",
+            boton: "boton-buscar-profesor",
             contenedor: "catalogo-profesores",
             mensaje: "sin-resultados-profesores"
         }
@@ -22,19 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
             .trim();
     }
 
-    configuraciones.forEach(({ input, contenedor, mensaje }) => {
+    configuraciones.forEach(({ input, boton, contenedor, mensaje }) => {
 
         const campo = document.getElementById(input);
+        const lupa = document.getElementById(boton);
         const lista = document.getElementById(contenedor);
         const aviso = document.getElementById(mensaje);
 
-        if (!campo || !lista) return;
+        if (!campo || !lupa || !lista) return;
 
         const tarjetas = Array.from(
             lista.querySelectorAll(".item-card")
         );
 
-        campo.addEventListener("input", () => {
+        function buscar() {
 
             const consulta = normalizar(campo.value);
             let visibles = 0;
@@ -46,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     " " + tarjeta.textContent
                 );
 
-                const coincide = texto.includes(consulta);
+                const coincide = consulta === "" || texto.includes(consulta);
 
                 tarjeta.hidden = !coincide;
 
@@ -56,7 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (aviso) {
                 aviso.hidden = visibles !== 0;
             }
+        }
 
+        // Buscar al tocar la lupa.
+        lupa.addEventListener("click", buscar);
+
+        // También permite buscar presionando Enter.
+        campo.addEventListener("keydown", evento => {
+            if (evento.key === "Enter") {
+                evento.preventDefault();
+                buscar();
+            }
         });
 
     });
