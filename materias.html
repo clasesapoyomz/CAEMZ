@@ -30,7 +30,22 @@
 
 </header>
 <section class="titulo-pagina"><h1>Materias</h1><p>Consultá la información de las asignaturas.</p></section>
-<main class="contenido"><label class="buscador-label" for="buscar-materia">Buscar materia</label><input id="buscar-materia" class="buscador" type="search" placeholder="Escribí el nombre de una materia…">
+<main class="contenido"><label class="buscador-label" for="buscar-materia">
+    Buscar materia
+</label>
+
+<div class="buscador-contenedor">
+    <input id="buscar-materia" class="buscador" type="search"
+        placeholder="Escribí el nombre de una materia…">
+
+    <button type="button" id="boton-buscar-materia"
+        aria-label="Buscar materia">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m16 16 5 5"></path>
+        </svg>
+    </button>
+</div>
 <div class="catalogo-grid" id="catalogo-materias">
   <article class="item-card" data-busqueda="matemática matematica">
     <div class="item-icono" aria-hidden="true">📐</div>
