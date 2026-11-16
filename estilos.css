@@ -444,7 +444,7 @@ textarea {
 
 .detalle {
     background: var(--blanco);
-    margin: 30px 0 35px;
+    margin: 30px auto 35px;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 3px 12px #172b4410;
@@ -585,7 +585,7 @@ textarea {
 
     .detalle {
         padding: 20px;
-        margin: 20px 0;
+        margin: 20px auto;
     }
 
     .form,
